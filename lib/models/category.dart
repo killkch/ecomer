@@ -10,27 +10,27 @@ class Category {
 
 final List<Category> categories = [
   Category(
-    title: "All",
+    title: "전체",
     image: "assets/all.png",
   ),
   Category(
-    title: "Shoes",
+    title: "신발",
     image: "assets/shoes.png",
   ),
   Category(
-    title: "Beauty",
+    title: "미용",
     image: "assets/beauty.png",
   ),
   Category(
-    title: "Women's\nFashion",
+    title: "여성복",
     image: "assets/image1.png",
   ),
   Category(
-    title: "Jewelry",
+    title: "보석",
     image: "assets/jewelry.png",
   ),
   Category(
-    title: "Men's\nFashion",
-    image: "images/men.png",
+    title: "남성복",
+    image: "assets/men.png",
   ),
 ];
