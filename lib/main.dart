@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ecomer/provider/cart_provider.dart';
+import 'package:ecomer/provider/favorite_provider.dart';
 import 'package:ecomer/screens/nav_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         provider.ChangeNotifierProvider(
           create: (_) => CartProvider(),
+        ),
+        provider.ChangeNotifierProvider(
+          create: (_) => FavoriteProvider(),
         ),
       ],
       child: MaterialApp(

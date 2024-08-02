@@ -2,8 +2,9 @@
 
 import 'package:ecomer/constants.dart';
 import 'package:ecomer/screens/cart/cart_screen.dart';
-import 'package:ecomer/screens/favorite.dart';
+import 'package:ecomer/screens/favorite/favorite.dart';
 import 'package:ecomer/screens/home/home_screen.dart';
+import 'package:ecomer/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -22,7 +23,7 @@ class _BottomNacBarState extends State<BottomNavBar> {
     Favorite(),
     HomeScreen(),
     CartScreen(),
-    Scaffold(),
+    Profile(),
   ];
 
   @override

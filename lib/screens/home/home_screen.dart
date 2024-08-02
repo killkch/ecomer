@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:ecomer/constants.dart';
+import 'package:ecomer/models/category.dart';
 import 'package:ecomer/models/product.dart';
 import 'package:ecomer/screens/home/widgets/category_widget.dart';
 import 'package:ecomer/screens/home/widgets/home_app_bar.dart';
@@ -18,9 +18,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentSlider = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    //?
+    List<List<Product>> selectedCategories = [
+      products,
+      shoes,
+      beauty,
+      womenFashion,
+      jewelry,
+      menFashion
+    ];
+    //?
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -46,7 +57,56 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 SizedBox(height: 20),
-                CategoryWidget(),
+                // CategoryWidget(),
+                SizedBox(
+                  height: 130,
+                  child: ListView.builder(
+                    itemCount: categories.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: selectedIndex == index
+                                  ? Colors.blue[200]
+                                  : Colors.transparent),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 65,
+                                width: 65,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(categories[index].image),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                categories[index].title,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: -1,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    // separatorBuilder: (context, index) => SizedBox(width: 20),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -79,10 +139,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  itemCount: products.length,
+                  itemCount: selectedCategories[selectedIndex].length,
                   itemBuilder: (context, index) {
                     return ProductCard(
-                      product: products[index],
+                      product: selectedCategories[selectedIndex][index],
                     );
                   },
                 ),

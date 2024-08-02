@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, unused_local_variable, avoid_print, sized_box_for_whitespace
 
 import 'package:ecomer/models/product.dart';
+import 'package:ecomer/provider/favorite_provider.dart';
 import 'package:ecomer/screens/detail/addto_cart.dart';
 import 'package:ecomer/screens/detail/description.dart';
 import 'package:ecomer/screens/detail/detail_app_bar.dart';
@@ -28,7 +29,7 @@ class _DetailScreenState extends State<DetailScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              DetailAppBar(),
+              DetailAppBar(product: widget.product),
               SizedBox(
                 height: 250,
                 child: PageView.builder(
